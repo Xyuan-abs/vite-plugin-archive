@@ -4,15 +4,20 @@ import { defineConfig } from 'tsup'
 export default defineConfig({
   // 核心配置
   entry: ['src/index.ts'], // 入口文件
-  format: ['cjs', 'esm'], // 生成 CJS 和 ESM 格式
+  format: ['esm'], // ESM 格式
   outDir: 'dist', // 输出目录
   dts: true, // 生成类型声明文件
   clean: true, // 构建前清空输出目录
 
   // 关键扩展配置
   outExtension({ format }) {
+    console.log('format ', format)
+    const map = {
+      esm: '.mjs',
+    }
+
     return {
-      js: format === 'esm' ? '.mjs' : '.js', // ESM 用 .mjs 扩展名
+      js: map[format as keyof typeof map] || '.js', // CJS 用 .cjs 扩展名ESM 用 .mjs 扩展名
     }
   },
   target: 'esnext', // 编译目标语法
