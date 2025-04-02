@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-archive",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -18,9 +18,6 @@
   "scripts": {
     "build": "tsup",
     "prepublishOnly": "npm run build"
-  },
-  "peerDependencies": {
-    "vite": "^5.0.0"
   },
   "dependencies": {
     "archiver": "^7.0.0",
